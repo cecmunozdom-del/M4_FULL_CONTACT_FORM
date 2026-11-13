@@ -1,4 +1,5 @@
-import { StrictMode } from 'react'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRoot } from 'react-dom/client'
 import './style.css'
 import App from './App.jsx'
