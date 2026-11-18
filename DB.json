@@ -1,0 +1,67 @@
+{
+  "records": [
+    {
+      "id": "1",
+      "title": "AM",
+      "artist": "Arctic Monkeys",
+      "genre": "Rock",
+      "format": "Vinilo",
+      "year": 2013,
+      "price": 28.99
+    },
+    {
+      "id": "2",
+      "title": "Mayéutica",
+      "artist": "Robe",
+      "genre": "Rock",
+      "format": "Vinilo",
+      "year": 2021,
+      "price": 32.50
+    },
+    {
+      "id": "3",
+      "title": "X's",
+      "artist": "Cigarettes After Sex",
+      "genre": "Indie",
+      "format": "Vinilo",
+      "year": 2024,
+      "price": 29.99
+    },
+    {
+      "id": "4",
+      "title": "Preacher's Daughter",
+      "artist": "Ethel Cain",
+      "genre": "Alternativo",
+      "format": "CD",
+      "year": 2022,
+      "price": 15.99
+    },
+    {
+      "id": "5",
+      "title": "ANGÉLIKA",
+      "artist": "Jimena Amarillo",
+      "genre": "Pop",
+      "format": "Vinilo",
+      "year": 2025,
+      "price": 24.99
+    },
+    {
+      "id": "6",
+      "title": "Ultraviolence",
+      "artist": "Lana del Rey",
+      "genre": "Alternativo",
+      "format": "Vinilo",
+      "year": 2014,
+      "price": 34.99
+    },
+    {
+      "id": "7",
+      "title": "the record",
+      "artist": "boygenius",
+      "genre": "Indie",
+      "format": "CD",
+      "year": 2023,
+      "price": 14.50
+    }
+  ]
+}
