@@ -21,6 +21,8 @@ Sobre todo me sirvió de gran ayuda en la programación de los componentes Formu
 
 Me sirvió también de ayuda con el css en general, aunque la versión final está ajustada y modificada por mí a mi gusto. Las unidades de distancias las he dejado en rem ya que es bastante estándar y me pareció correcto, pero las unidades del tamaño de las letras las cambié a em ya que es lo que yo suelo usar.
 
+Por último, tras la primera corrección de WebArena, Gemini me ayudó bastante a aplicar todos los cambios que requería mi página web, y a entender porqué y cómo mejoraban la arquitectura y el funcionamiento, además de la UX. Por ejemplo, el juntar las query keys en una constante para no repetirlas por todos los códigos, el separar los datos corruptos de los correctos para evitar que eso parase todo el funcionamiento del programa, o la creación de nuevos estados para mostrar mensajes e información útil al usuario (como un mensaje de confirmación si se ha guardado correctamente un nuevo disco).
+
 Algunos ejemplos de prompts:
 "¿Podrías explicarme cómo funciona TanStackQuery, y ayudarme a aplicarlo en esta app que estoy haciendo?"
 "¿En setError es estrictamente necesario que el primer elemento sea "id"? No lo entiendo." De hecho sí es necesario, con React Hook Form, setError tiene una estructura fija, y en mi caso ese primer elemento debe ser "id", ya que es el argumento que uso también en register("id") en los inputs del formulario, de forma que RHF puede saber en qué entrada de error debe guardar el mensaje.
