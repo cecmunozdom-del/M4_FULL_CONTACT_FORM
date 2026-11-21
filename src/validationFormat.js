@@ -1,11 +1,12 @@
 //DEFINIMOS EL FORMATO VÁLIDO DE LAS ENTRADAS DEL FORMULARIO CON ZOD
 
+import { perEnvironmentPlugin } from "vite";
 import { defaultErrorMap } from "zod/v3";
 
-const FORMATOS_VALIDOS = ["CD", "Vinilo", "Cassette", "Digital"];
-const GENEROS_VALIDOS = ['Rock', 'Pop', 'Alternativo', 'Indie', 'Jazz', 'Blues', 'Reggae', 'Electrónica', 'Hip-Hop', 'Rap', 'R&B', 'Metal', 'Reggaetón', 'Clásica'];
+export const FORMATOS_VALIDOS = ["CD", "Vinilo", "Cassette", "Digital"];
+export const GENEROS_VALIDOS = ['Rock', 'Pop', 'Alternativo', 'Indie', 'Jazz', 'Blues', 'Reggae', 'Electrónica', 'Hip-Hop', 'Rap', 'R&B', 'Metal', 'Reggaetón', 'Clásica'];
 
-const esquemaValidacion = z.object({
+export const esquemaValidacion = z.object({
 
   //ID: número entero y que no se repita (0-infinito) TODO
   id: z.coerce //coerce transforma el string que recibe HTML en número
@@ -14,29 +15,25 @@ const esquemaValidacion = z.object({
     .min(0, 'El ID no puede ser negativo'),
 
   //titulo: string que tenga como mínimo una letra
-  title: z.string().min(0, "Se requiere un nombre de álbum."),
+  title: z.string().trim().min(1, "Se requiere un nombre de álbum."),
 
   //artista: igual que título, como mínimo una letra
-  artist: z.string().min(0, "Se requiere un nombre de artista."),
+  artist: z.string().trim().min(1, "Se requiere un nombre de artista."),
 
   //género: uno de los establecidos en el const
   genre: z.string().min(1, "Se requiere especificar un género musical.").refine((valor) =>
     GENEROS_VALIDOS.some( //comprueba si en los géneros válidos hay alguno que coincida (todo en minúsculas)
       (genero) => genero.toLowerCase() === valor.trim().toLowerCase()
     ),
-    {
-      message: "Género no registrado."
-    }
+    { message: "Género no registrado." }
   ),
 
   //formato: uno de los establecidos en el const
   format: z.string().min(1, "Se requiere especificar un formato.").refine((valor) =>
-    GENEROS_VALIDOS.some( //comprueba si en los géneros válidos hay alguno que coincida (todo en minúsculas)
-      (genero) => genero.toLowerCase() === valor.trim().toLowerCase()
+    FORMATOS_VALIDOS.some( //comprueba si en los géneros válidos hay alguno que coincida (todo en minúsculas)
+      (formato) => formato.toLowerCase() === valor.trim().toLowerCase()
     ),
-    {
-      message: "Formato no registrado."
-    }
+    { message: "Formato no registrado." }
   ),
 
   //año: dentro del rango [1900 - 2026]
