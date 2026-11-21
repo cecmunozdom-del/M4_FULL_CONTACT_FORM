@@ -52,6 +52,16 @@ h1, h2 {
   font-family: "lane";
 }
 
+h4{
+  color:white;
+  font-size: 1em;
+}
+
+h4.errorMSG{
+  color: red;
+  font-size: 1em;
+}
+
 form {
   display: flex;
   flex-direction: column;

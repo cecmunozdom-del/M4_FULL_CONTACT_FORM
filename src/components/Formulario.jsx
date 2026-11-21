@@ -12,15 +12,17 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
 
     //React Hook Form + las restricciones de Zod
     const{
-        register, 
-        handleSubmit,
-        reset,
-        formState: { errors }, //mensajes de error de Zod
+        register, //devuelve { name, ref, onChange, onBlur } para conectar cada input y select con el formulario
+        handleSubmit, //ejecuta la validación y si todo es válido, llama a onSubmit
+        reset, //para rellenar o vaciar campos del formulario de golpe
+        formState: { errors }, //mensajes de error que Zod va guardando
     } = useForm({
-        resolver: zodResolver(esquemaValidacion),
+        //para validar los campos del formulario con Zod:
+        resolver: zodResolver(esquemaValidacion), 
     });
 
-
+    //cada vez que se le de a "Editar" este código se ejecutará
+    //cambiando el estado de la prop (en App.jsx)
     useEffect(() => {
         if(discoAEditar){
             //se rellenan los campos del disco a editar con lo que ya había
@@ -29,15 +31,16 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
             //todo vacío
             reset({ id: "", title: "", artist: "", genre: "", format: "", year: "", price: "" });
         }
-    }, [discoAEditar, reset]); //esto se ejecuta cuando hay un cambio en discoAEditar???
+    }, [discoAEditar]); //esto se ejecuta cuando hay un cambio en discoAEditar
 
 
     //mutación para crear POST
     const createMutation = useMutation({
         mutationFn: createDisco,
         onSuccess: () => {
+            //si tiene éxito, invalida la caché (para refrescar) y vacía el formulario
             queryClient.invalidateQueries ({ queryKey: ["discos"] });
-            reset();
+            reset(); //se vacía el formulario
         }
     });
 
@@ -46,11 +49,11 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
     const updateMutation = useMutation({
         mutationFn: updateDisco,
         onSuccess: () => {
+            //si tiene éxito, invalida la caché (para refrescar), y llama a onTerminarEdicion en App.jsx
             queryClient.invalidateQueries ({ queryKey: ["discos"] });
-            onTerminarEdicion();
+            onTerminarEdicion(); //discoAEditar pasará a null
         }
     });
-
 
 
     //solo se hace OnSubmit si los datos son buenos
@@ -58,9 +61,19 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
         if (discoAEditar) {
             updateMutation.mutate(datosValidos);
         } else {
+            //miramos los discos ya guardados para evitar repetir IDs:
+            const discosActuales = queryClient.getQueryData(["discos", "TODOS"]);
+            const existeID = discosActuales.some((disco) => Number(disco.id) === datosValidos.id);
+            
+            if(existeID){
+                alert("Ese ID ya está registrado, utiliza otro.");            
+                return;
+            }
+
             createMutation.mutate(datosValidos);
         }
     }
+
 
     //para saber si está guardando
     const estaGuardando = createMutation.isPending || updateMutation.isPending;

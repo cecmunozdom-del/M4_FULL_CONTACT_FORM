@@ -1,16 +1,19 @@
-//aquí incluimos las 4 opciones de CRUD (GET, POST, PUT, DELETE)
+//aquí se aíslan las peticiones fetch a la "API"
+//incluimos las 4 opciones de CRUD (GET, POST, PUT, DELETE)
 //bonus de safeParse
 
 import { z } from "zod";
 import { esquemaValidacion } from "./validationFormat";
 
+//tengo mi propia "base de datos" en un archivo JSON (DB.json)
 const API_URL = "http://localhost:3001/records";
 
 
 //READ -> obtener cierto disco
 export async function getDiscos(genero) {
     
-    //se podría usar algo llamado encodeURIComponent(), que sirve para filtrar caracteres especiales (como tildes o &) en formato seguro
+    //se podría usar algo llamado encodeURIComponent(), que sirve para filtrar caracteres 
+    //especiales (como tildes o &) en formato seguro
     const url = genero && genero !== "TODOS" ? `${API_URL}?genre=${genero}` : API_URL;
     const response = await fetch(url);
 
@@ -45,6 +48,7 @@ export async function createDisco(nuevoDisco){
         throw new Error("Error al crear nuevo disco.");
     }
     
+    console.log(nuevoDisco)
     return response.json();
 }
 
@@ -76,4 +80,6 @@ export async function deleteDisco (discoEliminar) {
     if(!response.ok){
         throw new Error("Error al eliminar este disco.");
     }
+
+    //en esta caso no hace falta devolver nada
 }

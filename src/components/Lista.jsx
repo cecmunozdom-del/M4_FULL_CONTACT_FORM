@@ -4,80 +4,92 @@ import { getDiscos, deleteDisco } from "../api";
 import { GENEROS_VALIDOS } from "../validationFormat";
 
 export function DiscosLista({ onEditar }) {
-  const [generoFiltro, setGeneroFiltro] = useState("TODOS");
-  const queryClient = useQueryClient();
 
-  const {
-    data: discos = [],
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ["discos", generoFiltro],
-    queryFn: () => getDiscos(generoFiltro),
-  });
+    //el estado inicial del filtro será TODOS los géneros
+    const [generoFiltro, setGeneroFiltro] = useState("TODOS");
+    const queryClient = useQueryClient();
 
-  const deleteMutation = useMutation({
-    mutationFn: deleteDisco,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["discos"] });
-    },
-  });
+    const {
+        data: discos = [], //para que discos.length no de error mientras llegan los datos
+        isLoading, //estados que gestiona ahora TanStack Query
+        isError, //estados que gestiona ahora TanStack Query
+        error,
+    } = useQuery({
+        queryKey: ["discos", generoFiltro], //la clave cambiará si se selecciona otro género
+        queryFn: () => getDiscos(generoFiltro), //se ejecuta queryFn (se hace fetch) cuando toque
+        //ambos resultados quedan guardados en caché
+    });
 
-  if (isLoading) {
-    return <h4>Cargando almacén de discos...</h4>;
-  }
 
-  if (isError) {
-    return <h4 role="alert" style={{ color: "red" }}>Error: {error.message}</h4>;
-  }
+    //esto se ejecutará al pulsar "Eliminar"
+    const deleteMutation = useMutation({
+        mutationFn: deleteDisco,
+        onSuccess: () => {
+            //esto informa a la caché que está deasctualizada y vuelve
+            //a hacer getDiscos (api.js) para obtener la actualizada
+            queryClient.invalidateQueries({ queryKey: ["discos"] });
+        },
+    });
 
-  return (
-    <div id="contenedor">
-      <h1>CATÁLOGO DE DISCOS</h1>
 
-      {/* DESPLEGABLE DE FILTRO */}
-      <div>
-        <label htmlFor="filtro-genero">Filtrar por género: </label>
-        <select
-          id="filtro-genero"
-          value={generoFiltro}
-          onChange={(evento) => setGeneroFiltro(evento.target.value)}
-        >
-          <option value="TODOS">Todos</option>
-          {GENEROS_VALIDOS.map((genero) => (
-            <option key={genero} value={genero}>
-              {genero}
-            </option>
-          ))}
-        </select>
-      </div>
+    //EARLY RETURNS
+    if (isLoading) {
+        return <h4>Cargando almacén de discos...</h4>;
+    }
 
-      {/* LISTADO DE RESULTADOS */}
-      {discos.length === 0 ? (
-        <p>No hay discos que coincidan con tu búsqueda.</p>
-      ) : (
-        <ul>
-          {discos.map((disco) => (
-            <li key={disco.id}>
-              <strong>{disco.title}</strong> — {disco.artist} ({disco.genre}, {disco.format}, {disco.year}) — {disco.price} €
+    if (isError) {
+        return <h4 role="alert" className="errorMSG">Error: {error.message}</h4>;
+    }
 
-              <button type="button" className="botonEditar" onClick={() => onEditar(disco)}>
-                Editar
-              </button>
 
-              <button
-                type="button"
-                className="botonEliminar"
-                onClick={() => deleteMutation.mutate(disco)}
-                disabled={deleteMutation.isPending}
-              >
-                {deleteMutation.isPending ? "Borrando..." : "Eliminar"}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+    return (
+        <div id="contenedor">
+        <h1>CATÁLOGO DE DISCOS</h1>
+
+        {/* DESPLEGABLE DE FILTRO */}
+        <div>
+            <label htmlFor="filtro-genero">Filtrar por género: </label>
+            <select
+            id="filtro-genero"
+            value={generoFiltro}
+            onChange={(evento) => setGeneroFiltro(evento.target.value)}
+            >
+            <option value="TODOS">Todos</option>
+            {GENEROS_VALIDOS.map((genero) => (
+                <option key={genero} value={genero}>
+                {genero}
+                </option>
+            ))}
+            </select>
+        </div>
+
+        {/* LISTADO DE RESULTADOS */}
+        {discos.length === 0 ? (
+            <p>No hay discos que coincidan con tu búsqueda.</p>
+        ) : (
+            <ul>
+            {/* cada "caja" de disco aparece con su info, y dos botones (editar y eliminar) */}
+            {discos.map((disco) => (
+
+                <li key={disco.id}>
+                {disco.title} — {disco.artist} ({disco.genre}, {disco.format}, {disco.year}) — {disco.price} €
+
+                <button type="button" className="botonEditar" onClick={() => onEditar(disco)}>
+                    Editar
+                </button>
+
+                <button
+                    type="button"
+                    className="botonEliminar"
+                    onClick={() => deleteMutation.mutate(disco)}
+                    disabled={deleteMutation.isPending} //si ya se está borrando evita clicks duplicados
+                >
+                    Eliminar
+                </button>
+                </li>
+            ))}
+            </ul>
+        )}
+        </div>
+    );
 }

@@ -11,12 +11,14 @@ function App() {
             <main>
 
                 {/* le pasamos al formulario el elemento a editar */}
+                {/* este formulario se colocará a la IZQ */}
                 <FormularioDiscos
                     discoAEditar={discoAEditar}
                     onTerminarEdicion={() => setDiscoAEditar(null)}
                 />
 
-                {/* le pasamos al formulario el elemento a editar */}
+                {/* le pasa a la lista de discos también la edición del disco */}
+                {/* la lista de discos y álbumnes se colocará a la DCHA */}
                 <DiscosLista onEditar={(disco) => setDiscoAEditar(disco)} />
 
             </main>

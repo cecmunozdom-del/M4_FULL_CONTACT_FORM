@@ -3,15 +3,19 @@
 import { z } from "zod";
 
 export const FORMATOS_VALIDOS = ["CD", "Vinilo", "Cassette", "Digital"];
-export const GENEROS_VALIDOS = ['Rock', 'Pop', 'Alternativo', 'Indie', 'Jazz', 'Blues', 'Reggae', 'Electrónica', 'Hip-Hop', 'Rap', 'R&B', 'Metal', 'Reggaetón', 'Clásica'];
+export const GENEROS_VALIDOS = ['Rock', 'Pop', 'Alternativo', 'Indie', 'Jazz', 'Blues', 
+                                'Reggae', 'Electrónica', 'Hip-Hop', 'Rap', 'R&B', 'Metal', 'Reggaetón', 'Clásica'];
 
 export const esquemaValidacion = z.object({
 
-  //ID: número entero y que no se repita (0-infinito) TODO
-  id: z.coerce //coerce transforma el string que recibe HTML en número
-    .number({ error: 'El ID debe ser un número' })
-    .int({ error: 'El ID no puede tener decimales' })
-    .min(0, 'El ID no puede ser negativo'),
+  //ID: número entero y que no se repita (0-infinito)
+  id: z.union([
+    z.coerce
+      .number({ error: "El ID debe ser un número" })
+      .int({ error: "El ID no puede tener decimales" })
+      .min(0, "El ID no puede ser negativo"),
+    z.string().min(1, "El ID es obligatorio"),
+  ]),
 
   //titulo: string que tenga como mínimo una letra
   title: z.string().trim().min(1, "Se requiere un nombre de álbum."),
@@ -49,4 +53,4 @@ export const esquemaValidacion = z.object({
     .max(1000, 'El precio máximo permitido es 1000 €'),
 
   
-}); //TOCHECK: a ver aquí cómo va lo de message y error
+}); 
