@@ -2,7 +2,6 @@
 //incluimos las 4 opciones de CRUD (GET, POST, PUT, DELETE)
 //bonus de safeParse
 
-import { z } from "zod";
 import { esquemaValidacion } from "./validationFormat";
 
 //tengo mi propia "base de datos" en un archivo JSON (DB.json)
@@ -12,9 +11,9 @@ const API_URL = "http://localhost:3001/records";
 //READ -> obtener cierto disco
 export async function getDiscos(genero) {
     
-    //se podría usar algo llamado encodeURIComponent(), que sirve para filtrar caracteres 
+    //se puede usar algo llamado encodeURIComponent(), que sirve para filtrar caracteres 
     //especiales (como tildes o &) en formato seguro
-    const url = genero && genero !== "TODOS" ? `${API_URL}?genre=${genero}` : API_URL;
+    const url = genero && genero !== "TODOS" ? `${API_URL}?genre=${encodeURIComponent(genero)}` : API_URL;
     const response = await fetch(url);
 
     if(!response.ok){
@@ -24,14 +23,30 @@ export async function getDiscos(genero) {
     const datosBruto = await response.json(); //.json()->lee el texto JSON y lo convierte en array JS
 
     //validación de datos con safeParse
-    const resultado = z.array(esquemaValidacion).safeParse(datosBruto);
+    const discosValidos = [];
+    const discosCorruptos = [];
 
-    //TODO: demostar cómo atrapa un dato corrupto
-    if(!resultado.success){
-        throw new Error("Error: datos corruptos detectados.");
-    }
+    for (const discoActual of datosBruto) {
+        const resultado = esquemaValidacion.safeParse(discoActual);
 
-    return resultado.data; //datos ya limpios y validados con Zod
+        if (resultado.success) {
+            //datos válidos en este disco en concreto
+            discosValidos.push(resultado.data);
+        } else {
+            //datos corruptos
+            discosCorruptos.push(discoActual);
+        }
+  }
+
+  if (discosCorruptos.length > 0) {
+    console.warn(`Se han descartado ${discosCorruptos.length} disco(s) con datos corruptos:`, discosCorruptos);
+  }
+
+  //devolvemos los discos limpios junto con el conteo de descartados para avisar en la UI
+  return {
+    discos: discosValidos,
+    corruptosDescartados: discosCorruptos.length,
+  };
 }
 
 
@@ -48,7 +63,6 @@ export async function createDisco(nuevoDisco){
         throw new Error("Error al crear nuevo disco.");
     }
     
-    console.log(nuevoDisco)
     return response.json();
 }
 
@@ -73,8 +87,7 @@ export async function updateDisco(discoActualizar) {
 export async function deleteDisco (discoEliminar) {
     const response = await fetch(`${API_URL}/${discoEliminar.id}`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...discoEliminar, id: String(discoEliminar.id) }),
+        //para una petición DELETE no se necesita header ni body, solo con el método y el ID basta
     });
 
     if(!response.ok){

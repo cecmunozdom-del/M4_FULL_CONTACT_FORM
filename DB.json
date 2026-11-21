@@ -179,6 +179,24 @@
       "format": "Vinilo",
       "year": 2006,
       "price": 27
+    },
+    {
+      "id": "21",
+      "title": "Disco Roto",
+      "artist": "---",
+      "genre": "Jazz",
+      "format": "Vinilo",
+      "year": 500,
+      "price": 0
+    },
+    {
+      "id": "FVAbUoYklK0",
+      "title": "r",
+      "artist": "r",
+      "genre": "Pop",
+      "format": "CD",
+      "year": 2006,
+      "price": 23
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
