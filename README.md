@@ -16,6 +16,8 @@ step para meter decimales
 ayuda para corregir un error: Uncaught SyntaxError: Identifier '__vite__injectQuery' has already been declared
 mucha ayuda a la hora de usar tan stack query, con códigos de ejemplo en los que basarme, y a veces dándome pistas y soluciones para poder avanzar, siempre entendiéndolo.
 
+ayuda con el css en general, aunque la versión final está ajustada y modificada por mí a mi gusto. Las unidades de distancias las he dejado en rem ya que es bastante estándar y me pareció correcto, pero las unidades del tamaño de las letras las cambié a em ya que es lo que yo suelo usar.
+
 Algunos ejemplos de prompts:
 
 

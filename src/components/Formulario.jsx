@@ -67,7 +67,7 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <h2>{discoAEditar ? "Editar Disco" : "Registrar Nuevo Disco"}</h2>
+            <h2>{discoAEditar ? "EDITAR DISCO" : "REGISTRAR NUEVO DISCO"}</h2>
 
 
             {/* ID */}
@@ -140,7 +140,7 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
                 {errors.price && <p role="alert" style={{ color: "red" }}>{errors.price.message}</p>}
             </div>
 
-            <button type="submit" disabled={estaGuardando}>
+            <button type="submit" className='botonSubmit' disabled={estaGuardando}>
                 {estaGuardando
                 ? "Guardando..."
                 : "Guardar Disco"}

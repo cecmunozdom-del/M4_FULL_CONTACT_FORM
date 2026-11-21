@@ -62,12 +62,13 @@ export function DiscosLista({ onEditar }) {
             <li key={disco.id}>
               <strong>{disco.title}</strong> — {disco.artist} ({disco.genre}, {disco.format}, {disco.year}) — {disco.price} €
 
-              <button type="button" onClick={() => onEditar(disco)}>
+              <button type="button" className="botonEditar" onClick={() => onEditar(disco)}>
                 Editar
               </button>
 
               <button
                 type="button"
+                className="botonEliminar"
                 onClick={() => deleteMutation.mutate(disco)}
                 disabled={deleteMutation.isPending}
               >

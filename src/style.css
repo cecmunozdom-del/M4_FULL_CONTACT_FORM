@@ -1,3 +1,21 @@
+/* FUENTES */
+@font-face {
+  font-family: 'blowbrush';
+  src: url("assets/media/fonts/blowbrush.ttf");
+}
+
+@font-face {
+  font-family: 'punk';
+  src: url("assets/media/fonts/punk.ttf");
+}
+
+@font-face {
+  font-family: 'lane';
+  src: url("assets/media/fonts/pennylane.ttf");
+}
+
+
+/* ESTILOS GENERALES */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,20 +41,15 @@ main {
   border-radius: 10px;
   padding: 2rem;
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 350px 1fr; /* divide el main en 2 columnas (FormularioDiscos y DiscosLista) */
   gap: 2rem;
   align-items: start;
 }
 
-@media (max-width: 800px) {
-  main {
-    grid-template-columns: 1fr;
-  }
-}
-
 h1, h2 {
   color: #B2F802;
-  margin-bottom: 1rem;
+  margin-bottom: 2em;
+  font-family: "lane";
 }
 
 form {
@@ -45,6 +58,7 @@ form {
   gap: 0.85rem;
 }
 
+/* los campos dentro del espacio del formulario */
 form > div {
   display: flex;
   flex-direction: column;
@@ -52,7 +66,7 @@ form > div {
 }
 
 label {
-  font-size: 0.9rem;
+  font-size: 0.8em;
 }
 
 input,
@@ -65,16 +79,15 @@ select {
   color: #ffffff;
 }
 
+/* cuando le haces click se pone verde el borde*/
 input:focus,
 select:focus {
   outline: none;
   border-color: #B2F802;
 }
 
-input:disabled {
-  opacity: 0.5;
-}
-
+/* pinta en rojo los campos del formulario que tengan el 
+atributo HTML aria-invalid en true, o sea que ha habido error*/
 input[aria-invalid="true"],
 select[aria-invalid="true"] {
   border-color: #ff4d4d;
@@ -88,21 +101,19 @@ button {
   cursor: pointer;
 }
 
-form button[type="submit"] {
+.botonSubmit {
   margin-top: 0.5rem;
   background-color: #B2F802;
   color: #000000;
 }
 
+
+/* las "tarjetas" de cada disco */
 #contenedor > div {
   margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.6rem;
-}
-
-#contenedor > div select {
-  max-width: 220px;
 }
 
 ul {
@@ -122,18 +133,14 @@ li {
   border-radius: 8px;
 }
 
-li strong {
-  color: #B2F802;
-}
-
-li button:first-of-type {
+.botonEditar {
   margin-left: auto;
   background-color: transparent;
   color: #B2F802;
   border: 1px solid #B2F802;
 }
 
-li button:last-of-type {
+.botonEliminar {
   background-color: #331414;
   color: #ff6b6b;
   border: 1px solid #662222;
