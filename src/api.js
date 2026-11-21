@@ -8,7 +8,7 @@ const API_URL = "http://localhost:3001/records";
 
 
 //READ -> obtener cierto disco
-export async function getDiscos(plataforma) {
+export async function getDiscos(genero) {
     
     //se podría usar algo llamado encodeURIComponent(), que sirve para filtrar caracteres especiales (como tildes o &) en formato seguro
     const url = genero && genero !== "TODOS" ? `${API_URL}?genre=${genero}` : API_URL;

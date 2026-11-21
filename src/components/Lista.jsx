@@ -68,7 +68,7 @@ export function DiscosLista({ onEditar }) {
 
               <button
                 type="button"
-                onClick={() => deleteMutation.mutate(disco.id)}
+                onClick={() => deleteMutation.mutate(disco)}
                 disabled={deleteMutation.isPending}
               >
                 {deleteMutation.isPending ? "Borrando..." : "Eliminar"}

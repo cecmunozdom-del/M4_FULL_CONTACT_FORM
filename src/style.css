@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background-image: url(assets/media/img/bg.webp);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 2rem 1rem;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+h1, h2 {
+  color: #B2F802;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+label {
+  font-size: 0.9rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid #444444;
+  border-radius: 6px;
+  background-color: #161616;
+  color: #ffffff;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #B2F802;
+}
+
+input:disabled {
+  opacity: 0.5;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: #ff4d4d;
+}
+
+button {
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button[type="submit"] {
+  margin-top: 0.5rem;
+  background-color: #B2F802;
+  color: #000000;
+}
+
+#contenedor > div {
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+#contenedor > div select {
+  max-width: 220px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem;
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+}
+
+li strong {
+  color: #B2F802;
+}
+
+li button:first-of-type {
+  margin-left: auto;
+  background-color: transparent;
+  color: #B2F802;
+  border: 1px solid #B2F802;
+}
+
+li button:last-of-type {
+  background-color: #331414;
+  color: #ff6b6b;
+  border: 1px solid #662222;
+}

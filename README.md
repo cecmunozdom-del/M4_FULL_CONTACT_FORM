@@ -13,6 +13,7 @@ La app simula la gestión de una tienda de discos, con una base de datos propia 
 la url en update y delete (tiene que buscar el ID)
 keys en option
 step para meter decimales 
+ayuda para corregir un error: Uncaught SyntaxError: Identifier '__vite__injectQuery' has already been declared
 mucha ayuda a la hora de usar tan stack query, con códigos de ejemplo en los que basarme, y a veces dándome pistas y soluciones para poder avanzar, siempre entendiéndolo.
 
 Algunos ejemplos de prompts:

@@ -2,66 +2,184 @@
   "records": [
     {
       "id": "1",
-      "title": "AM",
-      "artist": "Arctic Monkeys",
+      "title": "The Dark Side of the Moon",
+      "artist": "Pink Floyd",
       "genre": "Rock",
       "format": "Vinilo",
-      "year": 2013,
-      "price": 28.99
+      "year": 1973,
+      "price": 32.99
     },
     {
       "id": "2",
-      "title": "Mayéutica",
-      "artist": "Robe",
-      "genre": "Rock",
+      "title": "Thriller",
+      "artist": "Michael Jackson",
+      "genre": "Pop",
       "format": "Vinilo",
-      "year": 2021,
-      "price": 32.50
+      "year": 1982,
+      "price": 29.5
     },
     {
       "id": "3",
-      "title": "X's",
-      "artist": "Cigarettes After Sex",
-      "genre": "Indie",
-      "format": "Vinilo",
-      "year": 2024,
-      "price": 29.99
+      "title": "OK Computer",
+      "artist": "Radiohead",
+      "genre": "Alternativo",
+      "format": "CD",
+      "year": 1997,
+      "price": 16.99
     },
     {
       "id": "4",
-      "title": "Preacher's Daughter",
-      "artist": "Ethel Cain",
-      "genre": "Alternativo",
-      "format": "CD",
-      "year": 2022,
-      "price": 15.99
+      "title": "AM",
+      "artist": "Arctic Monkeys",
+      "genre": "Indie",
+      "format": "Vinilo",
+      "year": 2013,
+      "price": 27.99
     },
     {
       "id": "5",
-      "title": "ANGÉLIKA",
-      "artist": "Jimena Amarillo",
-      "genre": "Pop",
+      "title": "Kind of Blue",
+      "artist": "Miles Davis",
+      "genre": "Jazz",
       "format": "Vinilo",
-      "year": 2025,
-      "price": 24.99
+      "year": 1959,
+      "price": 34
     },
     {
       "id": "6",
-      "title": "Ultraviolence",
-      "artist": "Lana del Rey",
-      "genre": "Alternativo",
+      "title": "Live at the Regal",
+      "artist": "B.B. King",
+      "genre": "Blues",
       "format": "Vinilo",
-      "year": 2014,
-      "price": 34.99
+      "year": 1965,
+      "price": 28.5
     },
     {
       "id": "7",
-      "title": "the record",
-      "artist": "boygenius",
-      "genre": "Indie",
+      "title": "Legend",
+      "artist": "Bob Marley & The Wailers",
+      "genre": "Reggae",
       "format": "CD",
-      "year": 2023,
-      "price": 14.50
+      "year": 1984,
+      "price": 15
+    },
+    {
+      "id": "8",
+      "title": "Random Access Memories",
+      "artist": "Daft Punk",
+      "genre": "Electrónica",
+      "format": "Vinilo",
+      "year": 2013,
+      "price": 35.99
+    },
+    {
+      "id": "9",
+      "title": "Illmatic",
+      "artist": "Nas",
+      "genre": "Hip-Hop",
+      "format": "Cassette",
+      "year": 1994,
+      "price": 19.99
+    },
+    {
+      "id": "10",
+      "title": "The Marshall Mathers LP",
+      "artist": "Eminem",
+      "genre": "Rap",
+      "format": "CD",
+      "year": 2000,
+      "price": 14.99
+    },
+    {
+      "id": "11",
+      "title": "Blonde",
+      "artist": "Frank Ocean",
+      "genre": "R&B",
+      "format": "Digital",
+      "year": 2016,
+      "price": 12.99
+    },
+    {
+      "id": "12",
+      "title": "Master of Puppets",
+      "artist": "Metallica",
+      "genre": "Metal",
+      "format": "Vinilo",
+      "year": 1986,
+      "price": 200
+    },
+    {
+      "id": "13",
+      "title": "Un Verano Sin Ti",
+      "artist": "Bad Bunny",
+      "genre": "Reggaetón",
+      "format": "Digital",
+      "year": 2022,
+      "price": 11.99
+    },
+    {
+      "id": "14",
+      "title": "The Four Seasons",
+      "artist": "Antonio Vivaldi",
+      "genre": "Clásica",
+      "format": "CD",
+      "year": 1982,
+      "price": 13.5
+    },
+    {
+      "id": "15",
+      "title": "Abbey Road",
+      "artist": "The Beatles",
+      "genre": "Rock",
+      "format": "Vinilo",
+      "year": 1969,
+      "price": 33.99
+    },
+    {
+      "id": "16",
+      "title": "Future Nostalgia",
+      "artist": "Dua Lipa",
+      "genre": "Pop",
+      "format": "Vinilo",
+      "year": 2020,
+      "price": 26.5
+    },
+    {
+      "id": "17",
+      "title": "Currents",
+      "artist": "Tame Impala",
+      "genre": "Indie",
+      "format": "Vinilo",
+      "year": 2015,
+      "price": 30
+    },
+    {
+      "id": "18",
+      "title": "Cross",
+      "artist": "Justice",
+      "genre": "Electrónica",
+      "format": "CD",
+      "year": 2007,
+      "price": 15.99
+    },
+    {
+      "id": "19",
+      "title": "good kid, m.A.A.d city",
+      "artist": "Kendrick Lamar",
+      "genre": "Hip-Hop",
+      "format": "Vinilo",
+      "year": 2012,
+      "price": 29.99
+    },
+    {
+      "id": "20",
+      "title": "Back to Black",
+      "artist": "Amy Winehouse",
+      "genre": "R&B",
+      "format": "Vinilo",
+      "year": 2006,
+      "price": 27
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

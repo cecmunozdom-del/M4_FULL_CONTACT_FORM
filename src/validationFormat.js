@@ -1,7 +1,6 @@
 //DEFINIMOS EL FORMATO VÁLIDO DE LAS ENTRADAS DEL FORMULARIO CON ZOD
 
-import { perEnvironmentPlugin } from "vite";
-import { defaultErrorMap } from "zod/v3";
+import { z } from "zod";
 
 export const FORMATOS_VALIDOS = ["CD", "Vinilo", "Cassette", "Digital"];
 export const GENEROS_VALIDOS = ['Rock', 'Pop', 'Alternativo', 'Indie', 'Jazz', 'Blues', 'Reggae', 'Electrónica', 'Hip-Hop', 'Rap', 'R&B', 'Metal', 'Reggaetón', 'Clásica'];
