@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createDisco, updateDisco } from '../api';
+import { createDisco, updateDisco } from '../services/api';
 
 import { FORMATOS_VALIDOS, GENEROS_VALIDOS, DISCOS_QUERY_KEYS, esquemaValidacion } from '../validationFormat';
 
@@ -125,7 +125,7 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
             {/* TITULO */}
             <div>
                 <label htmlFor='title'> Título del album: </label>
-                <input id="title" type="text" {... register("title")} 
+                <input id="title" type="text" placeholder='Ej: Nevermind' {... register("title")} 
                 aria-invalid={!!errors.title} 
                 aria-describedby={errors.title ? "error-title" : undefined}
                 />
@@ -136,7 +136,7 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
             {/* ARTISTA */}
             <div>
                 <label htmlFor='artist'> Artista: </label>
-                <input id="artist" type="text" {... register("artist")} 
+                <input id="artist" type="text" placeholder='Ej: Nirvana' {... register("artist")} 
                 aria-invalid={!!errors.artist} 
                 aria-describedby={errors.artist ? "error-artist" : undefined}
                 />
@@ -184,7 +184,7 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
             {/* AÑO */}
             <div>
                 <label htmlFor="year"> Año de lanzamiento: </label>
-                <input id="year" type="number" {...register("year")} 
+                <input id="year" type="number" placeholder='Ej: 1991' {...register("year")} 
                 aria-invalid={!!errors.year}
                 aria-describedby={errors.year ? "error-year" : undefined}
                 />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient, keepPreviousData } from "@tanstack/react-query";
-import { getDiscos, deleteDisco } from "../api";
+import { getDiscos, deleteDisco } from "../services/api";
 import { GENEROS_VALIDOS, DISCOS_QUERY_KEYS } from "../validationFormat";
 
 export function DiscosLista({ onEditar }) {

@@ -2,7 +2,7 @@
 //incluimos las 4 opciones de CRUD (GET, POST, PUT, DELETE)
 //bonus de safeParse
 
-import { esquemaValidacion } from "./validationFormat";
+import { esquemaValidacion } from "../validationFormat";
 
 //tengo mi propia "base de datos" en un archivo JSON (DB.json)
 const API_URL = "http://localhost:3001/records";

@@ -6,7 +6,10 @@ Misión M4 · Full Contact Form Valida o MUERE — Web Development I.
 La app simula la gestión de una tienda de discos, con una base de datos propia en JSON donde se almacenan los distintos discos a la venta, con sus diferentes características (estilos, autores, formatos...). Mediante el formulario modo CRUD se permite añadir, eliminar, modificar y filtrar por género los discos "en stock". Para ponerlo en funcionamiento se arrancan dos terminales en paralelo, una que lanza la "base de datos" con el comando: npx json-server DB.json --port 3001, y otra que lanza la app con el comando: npm run dev.
 
 COMPROBACIÓN DE DATO CORRUPTO:
-Esta app emplea limpieza de datos con Zod y safeParse, de forma que se muestran por pantalla el número de discos con datos corruptos detectados en la base de datos en todo momento.
+Esta app emplea limpieza de datos con Zod y safeParse, de forma que se muestran por pantalla el número de discos con datos corruptos detectados en la base de datos en todo momento. 
+
+SOBRE LA API
+La URL base de la API está definida directamente en el script de api.js (no en un .env) para facilitar que la app se pueda clonar y ejecutar sin configuración extra, ya que como dice en la unidad, en las aplicaciones cliente cualquier variable de tipo VITE_ acaba siendo pública para el navegador de todas formas.
 
 
 ## Uso de IA
