@@ -106,7 +106,7 @@ export function FormularioDiscos({ discoAEditar, onTerminarEdicion }) {
     const errorMutacion = createMutation.error || updateMutation.error;
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <h2>{discoAEditar ? "EDITAR DISCO" : "REGISTRAR NUEVO DISCO"}</h2>
 
 
